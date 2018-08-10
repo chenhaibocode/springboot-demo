@@ -55,16 +55,15 @@ public class ReverseLinkList {
     /**
      * 递归反转
      * @param node
-     * @param preNode
      * @return
      */
-    private Node reverse2(Node node, Node preNode) {
-        if(node.next == null) {
-            node.next = preNode;
+    private Node reverse2(Node node) {
+        if (node == null || node.next == null) {
             return node;
         } else {
-            Node re = reverse2(node.next, node);
-            node.next = preNode;
+            Node re = reverse2(node.next);
+            node.next.next = node;
+            node.next = null;
             return re;
         }
     }
@@ -87,7 +86,7 @@ public class ReverseLinkList {
         //System.out.println("\n");
         //demo.iteratorList(demo.reverse(node1));
         System.out.println("\n");
-        demo.iteratorList(demo.reverse2(node1, null));
+        demo.iteratorList(demo.reverse2(node1));
     }
 
     private class Node {
