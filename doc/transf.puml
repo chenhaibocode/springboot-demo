@@ -1,0 +1,13 @@
+@startuml
+Application -> Proxy: 1.redisDao request
+Proxy --> Ucc: 2.switch request
+Proxy <-- Ucc: 3.switch response
+
+Proxy -> R2m: 4.r2m request
+Proxy <-- R2m: 5.r2m response
+Application <-- Proxy: 6.redisDao response
+
+Proxy -> Jimdb: 7.jimdb request
+Proxy <-- Jimdb: 8.jimdb response
+Application <-- Proxy: 9.redisDao response
+@enduml
